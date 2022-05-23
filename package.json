@@ -1,0 +1,19 @@
+{
+  "name": "get-gitversion",
+  "version": "1.0.0",
+  "description": "This is a GitHub workflow which calculates the commit version based on Git history.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opentap/get-gitversion.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/opentap/get-gitversion/issues"
+  },
+  "homepage": "https://github.com/opentap/get-gitversion#readme"
+}
