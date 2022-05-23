@@ -7,14 +7,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0        
       - name: GitVersion
-        uses: ./ # Uses an action in the root directory
+        id: v
+        uses: ./ # This repo action
+      - name: Test
         run: 
-          echo "ShortVersion ${{ GitVersion.ShortVersion }}"
-          echo "LongVersion ${{ GitVersion.LongVersion }}"
-          echo "GitVersion ${{ GitVersion.GitVersion }}"
+          echo ${{ steps.v.outputs.ShortVersion }}
+          echo ${{ steps.v.outputs.LongVersion }}
+          echo ${{ steps.v.outputs.GitVersion }}
 
   test-win:
     runs-on: windows-2022
@@ -22,11 +22,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0        
       - name: GitVersion
-        uses: ./ # Uses an action in the root directory
+        id: v
+        uses: ./ # This repo action
+      - name: Test
         run: 
-          echo "ShortVersion ${{ GitVersion.ShortVersion }}"
-          echo "LongVersion ${{ GitVersion.LongVersion }}"
-          echo "GitVersion ${{ GitVersion.GitVersion }}"        
+          echo ${{ steps.v.outputs.ShortVersion }}
+          echo ${{ steps.v.outputs.LongVersion }}
+          echo ${{ steps.v.outputs.GitVersion }}

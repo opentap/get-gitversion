@@ -3,31 +3,19 @@ description: 'Calculate the version of the current commit.'
 outputs:
   ShortVersion:
     description: "a.b.c"
-    value: ${{ runs.steps.asmVer.outputs.ver }}
+    value: ${{ steps.asmVer.outputs.ver }}
   LongVersion:
     description: "a.b.c.d"
-    value: ${{ runs.steps.longVer.outputs.ver }}
+    value: ${{ steps.longVer.outputs.ver }}
   GitVersion:
     description: "a.b.c-prerelease+commithash.branchname"
-    value: ${{ runs.steps.gitVer.outputs.ver }}
+    value: ${{ steps.gitVer.outputs.ver }}
 runs:
   using: "composite"
   steps:
-    - name: Create OpenTAP install dir
-      shell: bash
-      run: mkdir $HOME/.tap
-    - name: Download OpenTAP
-      shell: bash
-      run: wget -O opentap.TapPackage https://packages.opentap.io/3.0/downloadpackage/OpenTAP?os=linux
-    - name: Unzip
-      shell: bash
-      run: unzip opentap.TapPackage -d "$HOME/.tap"
-    - name: Change permission
-      shell: bash
-      run: chmod +x $HOME/.tap/tap
-    - name: Create symlink
-      shell: bash
-      run: ln -s -f "$HOME/.tap/tap" /usr/local/bin/tap
+    - uses: opentap/setup-opentap@v1.0
+      with:
+        version: 9.17.4
     - name: Checkout
       uses: actions/checkout@v2
       with:
