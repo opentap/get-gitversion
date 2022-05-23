@@ -10,12 +10,13 @@ jobs:
         with:
           fetch-depth: 0        
       - name: GitVersion
+        id: GitVersion
         uses: ./ # Uses an action in the root directory
       - name: Test
         run: 
-          echo "ShortVersion ${{ GitVersion.ShortVersion }}"
-          echo "LongVersion ${{ GitVersion.LongVersion }}"
-          echo "GitVersion ${{ GitVersion.GitVersion }}"        
+          echo "ShortVersion ${{ steps.GitVersion.ShortVersion }}"
+          echo "LongVersion ${{ steps.GitVersion.LongVersion }}"
+          echo "GitVersion ${{ steps.GitVersion.GitVersion }}"        
 
   test-win:
     runs-on: windows-2022
@@ -26,9 +27,10 @@ jobs:
         with:
           fetch-depth: 0        
       - name: GitVersion
+        id: GitVersion
         uses: ./ # Uses an action in the root directory
       - name: Test
         run: 
-          echo "ShortVersion ${{ GitVersion.ShortVersion }}"
-          echo "LongVersion ${{ GitVersion.LongVersion }}"
-          echo "GitVersion ${{ GitVersion.GitVersion }}"        
+          echo "ShortVersion ${{ steps.GitVersion.ShortVersion }}"
+          echo "LongVersion ${{ steps.GitVersion.LongVersion }}"
+          echo "GitVersion ${{ steps.GitVersion.GitVersion }}"        
