@@ -10,13 +10,13 @@ jobs:
         with:
           fetch-depth: 0        
       - name: GitVersion
-        id: GitVersion
+        id: v
         uses: ./ # This repo action
       - name: Test
         run: 
-          echo ${{ GitVersion.outputs.ShortVersion }}
-          echo ${{ GitVersion.outputs.LongVersion }}
-          echo ${{ GitVersion.outputs.GitVersion }}
+          echo ${{ v.outputs.ShortVersion }}
+          echo ${{ v.outputs.LongVersion }}
+          echo ${{ v.outputs.GitVersion }}
 
   test-win:
     runs-on: windows-2022
@@ -27,10 +27,10 @@ jobs:
         with:
           fetch-depth: 0        
       - name: GitVersion
-        id: GitVersion
+        id: v
         uses: ./ # This repo action
       - name: Test
         run: 
-          echo ${{ GitVersion.outputs.ShortVersion }}
-          echo ${{ GitVersion.outputs.LongVersion }}
-          echo ${{ GitVersion.outputs.GitVersion }}
+          echo ${{ v.outputs.ShortVersion }}
+          echo ${{ v.outputs.LongVersion }}
+          echo ${{ v.outputs.GitVersion }}
