@@ -11,10 +11,11 @@ jobs:
           fetch-depth: 0        
       - name: GitVersion
         uses: ./ # Uses an action in the root directory
+      - name: Test
         run: 
           echo "ShortVersion ${{ GitVersion.ShortVersion }}"
           echo "LongVersion ${{ GitVersion.LongVersion }}"
-          echo "GitVersion ${{ GitVersion.GitVersion }}"
+          echo "GitVersion ${{ GitVersion.GitVersion }}"        
 
   test-win:
     runs-on: windows-2022
@@ -26,6 +27,7 @@ jobs:
           fetch-depth: 0        
       - name: GitVersion
         uses: ./ # Uses an action in the root directory
+      - name: Test
         run: 
           echo "ShortVersion ${{ GitVersion.ShortVersion }}"
           echo "LongVersion ${{ GitVersion.LongVersion }}"
