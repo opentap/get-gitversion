@@ -7,8 +7,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0        
       - name: GitVersion
         id: v
         uses: ./ # This repo action
@@ -24,8 +22,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0        
       - name: GitVersion
         id: v
         uses: ./ # This repo action
