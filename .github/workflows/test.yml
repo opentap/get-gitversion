@@ -1,0 +1,32 @@
+on: [push]
+
+jobs:
+  test-linux:
+    runs-on: ubuntu-20.04
+    name: Test Linux
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0        
+      - name: GitVersion
+        uses: ./ # Uses an action in the root directory
+        run: 
+          echo "ShortVersion ${{ GitVersion.ShortVersion }}"
+          echo "LongVersion ${{ GitVersion.LongVersion }}"
+          echo "GitVersion ${{ GitVersion.GitVersion }}"
+
+  test-win:
+    runs-on: windows-2022
+    name: Test Windows
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0        
+      - name: GitVersion
+        uses: ./ # Uses an action in the root directory
+        run: 
+          echo "ShortVersion ${{ GitVersion.ShortVersion }}"
+          echo "LongVersion ${{ GitVersion.LongVersion }}"
+          echo "GitVersion ${{ GitVersion.GitVersion }}"        

@@ -1,0 +1,52 @@
+name: 'Get GitVersion'
+description: 'Calculate the version of the current commit.'
+outputs:
+  ShortVersion:
+    description: "a.b.c"
+    value: ${{ runs.steps.asmVer.outputs.ver }}
+  LongVersion:
+    description: "a.b.c.d"
+    value: ${{ runs.steps.longVer.outputs.ver }}
+  GitVersion:
+    description: "a.b.c-prerelease+commithash.branchname"
+    value: ${{ runs.steps.gitVer.outputs.ver }}
+runs:
+  using: "composite"
+  steps:
+    - name: Create OpenTAP install dir
+      shell: bash
+      run: mkdir $HOME/.tap
+    - name: Download OpenTAP
+      shell: bash
+      run: wget -O opentap.TapPackage https://packages.opentap.io/3.0/downloadpackage/OpenTAP?os=linux
+    - name: Unzip
+      shell: bash
+      run: unzip opentap.TapPackage -d "$HOME/.tap"
+    - name: Change permission
+      shell: bash
+      run: chmod +x $HOME/.tap/tap
+    - name: Create symlink
+      shell: bash
+      run: ln -s -f "$HOME/.tap/tap" /usr/local/bin/tap
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Fix tags
+      shell: bash
+      if: startsWith(github.ref, 'refs/tags/v')
+      run: git fetch -f origin ${{ github.ref }}:${{ github.ref }} # Fixes an issue with actions/checkout@v2. See https://github.com/actions/checkout/issues/290
+    - name: tap sdk gitversion --fields 3
+      shell: bash
+      id: asmVer
+      run: echo ::set-output name=ver::`tap sdk gitversion --fields 3`
+    - name: tap sdk gitversion --fields 4
+      shell: bash
+      id: longVer
+      run: echo ::set-output name=ver::`tap sdk gitversion --fields 4`
+    - name: tap sdk gitversion
+      shell: bash
+      id: gitVer
+      run: echo ::set-output name=ver::$(tap sdk gitversion)  
+
+
