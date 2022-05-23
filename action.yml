@@ -3,13 +3,13 @@ description: 'Calculate the version of the current commit.'
 outputs:
   ShortVersion:
     description: "a.b.c"
-    value: ${{ runs.steps.asmVer.outputs.ver }}
+    value: ${{ steps.asmVer.outputs.ver }}
   LongVersion:
     description: "a.b.c.d"
-    value: ${{ runs.steps.longVer.outputs.ver }}
+    value: ${{ steps.longVer.outputs.ver }}
   GitVersion:
     description: "a.b.c-prerelease+commithash.branchname"
-    value: ${{ runs.steps.gitVer.outputs.ver }}
+    value: ${{ steps.gitVer.outputs.ver }}
 runs:
   using: "composite"
   steps:
