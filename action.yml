@@ -13,21 +13,9 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Create OpenTAP install dir
-      shell: bash
-      run: mkdir $HOME/.tap
-    - name: Download OpenTAP
-      shell: bash
-      run: wget -O opentap.TapPackage https://packages.opentap.io/3.0/downloadpackage/OpenTAP?os=linux
-    - name: Unzip
-      shell: bash
-      run: unzip opentap.TapPackage -d "$HOME/.tap"
-    - name: Change permission
-      shell: bash
-      run: chmod +x $HOME/.tap/tap
-    - name: Create symlink
-      shell: bash
-      run: ln -s -f "$HOME/.tap/tap" /usr/local/bin/tap
+    - uses: opentap/setup-opentap@v1.0
+      with:
+        version: 9.17.4
     - name: Checkout
       uses: actions/checkout@v2
       with:
