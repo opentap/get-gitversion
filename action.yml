@@ -2,13 +2,13 @@ name: 'Get GitVersion'
 description: 'Calculate the version of the current commit.'
 outputs:
   ShortVersion:
-    description: "a.b.c"
+    description: "major.minor.patch"
     value: ${{ steps.asmVer.outputs.ver }}
   LongVersion:
-    description: "a.b.c.d"
+    description: "major.minor.patch-prerelease"
     value: ${{ steps.longVer.outputs.ver }}
   GitVersion:
-    description: "a.b.c-prerelease+commithash.branchname"
+    description: "major.minor.patch-prerelease+commithash.branchname"
     value: ${{ steps.gitVer.outputs.ver }}
 runs:
   using: "composite"
