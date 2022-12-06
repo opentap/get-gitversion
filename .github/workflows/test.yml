@@ -30,3 +30,4 @@ jobs:
           echo ${{ steps.v.outputs.ShortVersion }}
           echo ${{ steps.v.outputs.LongVersion }}
           echo ${{ steps.v.outputs.GitVersion }}
+          echo ${{ steps.v.outputs.GitVersionPrerelease }}
