@@ -26,7 +26,7 @@ jobs:
         id: v
         uses: ./ # This repo action
       - name: Test
-        run: 
+        run: |
           echo ${{ steps.v.outputs.ShortVersion }}
           echo ${{ steps.v.outputs.LongVersion }}
           echo ${{ steps.v.outputs.GitVersion }}
