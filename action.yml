@@ -10,6 +10,9 @@ outputs:
   GitVersion:
     description: "major.minor.patch-prerelease+commithash.branchname"
     value: ${{ steps.gitVer.outputs.ver }}
+  GitVersionPrerelease:
+    description: "prerelease"
+    value: ${{ steps.prereleaseVer.outputs.ver }}
 runs:
   using: "composite"
   steps:
@@ -27,14 +30,19 @@ runs:
     - name: tap sdk gitversion --fields 3
       shell: bash
       id: asmVer
-      run: echo ::set-output name=ver::`tap sdk gitversion --fields 3`
+      run: echo "VER=`tap sdk gitversion --fields 3`" >> $GITHUB_OUTPUT
     - name: tap sdk gitversion --fields 4
       shell: bash
       id: longVer
-      run: echo ::set-output name=ver::`tap sdk gitversion --fields 4`
+      run: echo "VER=`tap sdk gitversion --fields 4`" >> $GITHUB_OUTPUT
     - name: tap sdk gitversion
       shell: bash
       id: gitVer
-      run: echo ::set-output name=ver::$(tap sdk gitversion)  
+      run: echo "VER=`tap sdk gitversion`" >> $GITHUB_OUTPUT
+    - name: Prerelease
+      shell: bash
+      id: prereleaseVer
+      run: |
+           echo "VER=`tap sdk gitversion | sed -n 's/.*-\([^+]*\).*/\1/p'`" >> $GITHUB_OUTPUT
 
 
