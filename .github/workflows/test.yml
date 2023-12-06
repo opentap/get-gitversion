@@ -6,7 +6,7 @@ jobs:
     name: Test Linux
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: GitVersion
         id: v
         uses: ./ # This repo action
@@ -22,7 +22,7 @@ jobs:
     name: Test Windows
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: GitVersion
         id: v
         uses: ./ # This repo action
