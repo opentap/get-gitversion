@@ -16,7 +16,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - uses: opentap/setup-opentap@v1.0
+    - uses: opentap/setup-opentap@main
       with:
         version: 9.16.4
     - name: Checkout
