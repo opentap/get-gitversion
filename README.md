@@ -13,10 +13,11 @@ jobs:
       ShortVersion: ${{ steps.gitversion.outputs.ShortVersion }}
       LongVersion: ${{ steps.gitversion.outputs.LongVersion }}
       GitVersion: ${{ steps.gitversion.outputs.GitVersion }}
+      GitVersionPrerelease: ${{ steps.gitversion.outputs.GitVersionPrerelease }}
     steps:
       - name: GitVersion
         id: gitversion
-        uses: opentap/get-gitversion@v1.0
+        uses: opentap/get-gitversion@v1.2
 ```
 
 You can then use the version in a job like this:
