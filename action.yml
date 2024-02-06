@@ -18,7 +18,8 @@ runs:
   steps:
     - uses: opentap/setup-opentap@main
       with:
-        version: 9.16.4
+        # this version introduced a change to gitversion behavior. Once the change is released, we should replace this with a release version, and make a new get-gitversion release
+        version: 9.23.2-beta.16
     - name: Checkout
       uses: actions/checkout@v4
       with:
