@@ -18,7 +18,7 @@ runs:
   steps:
     - uses: opentap/setup-opentap@main
       with:
-        version: 9.16.4
+        version: 9.25.0
     - name: Checkout
       uses: actions/checkout@v4
       with:
