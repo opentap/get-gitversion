@@ -42,7 +42,7 @@ runs:
     - name: Prerelease
       shell: bash
       id: prereleaseVer
-      run: echo "VER=`tap sdk gitversion | sed -n 's/.*-\([^+]*\).*/\1/p'`" >> $GITHUB_OUTPUT
+      run: echo "VER=`tap sdk gitversion | sed -n 's/[^-]*-\([^+]*\).*/\1/p'`" >> $GITHUB_OUTPUT
     - name: Print Version
       shell: bash
       run: echo `tap sdk gitversion`
