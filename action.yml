@@ -16,11 +16,11 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - uses: opentap/setup-opentap@main
+    - uses: opentap/setup-opentap@4ce8e1324b12b2abc1084097c8f8e554705bbadb #main
       with:
         version: 9.25.0
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
       with:
         fetch-depth: 0
     - name: Fix tags
