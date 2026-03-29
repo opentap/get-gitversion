@@ -16,7 +16,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - uses: opentap/setup-opentap@c60c3386267d6c8c39d5ad8bd76a219c20f12f33 #fix/upgrade-node-to-node24 (pending v1.1)
+    - uses: opentap/setup-opentap@2e83d3a458459f89c19e3b6f065231df5c1a8a6c #fix/upgrade-node-to-node24 (pending v1.1)
       with:
         version: 9.25.0
     - name: Checkout
