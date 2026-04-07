@@ -16,11 +16,11 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - uses: opentap/setup-opentap@main
+    - uses: opentap/setup-opentap@6eee68cf35f2e861f93d21029bbe7af4c427b9bd #main (pending v1.1)
       with:
-        version: 9.25.0
+        version: 9.28.3
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
       with:
         fetch-depth: 0
     - name: Fix tags
@@ -46,5 +46,3 @@ runs:
     - name: Print Version
       shell: bash
       run: echo `tap sdk gitversion`
-
-
