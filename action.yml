@@ -16,7 +16,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - uses: opentap/setup-opentap@c6d2f1b96f94fc15614c47ae3b61bb22a6eeb3d8 #fix-test-repo-servers (pending v1.1)
+    - uses: opentap/setup-opentap@6eee68cf35f2e861f93d21029bbe7af4c427b9bd #main (pending v1.1)
       with:
         version: 9.28.3
     - name: Checkout
